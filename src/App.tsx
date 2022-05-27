@@ -33,8 +33,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
+        <div className="content">
         {loadingIndicator()}
 
         { workers?.map(w =>
@@ -42,7 +41,6 @@ function App() {
         )}
 
         </div>
-      </header>
     </div>
   )
 }
