@@ -34,6 +34,9 @@
 }
 .person div {
 }
+.person .location {
+  font-size: 1rem;
+}
 
 .person img {
   object-fit: scale-down;

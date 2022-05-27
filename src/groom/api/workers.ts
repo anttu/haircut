@@ -7,7 +7,7 @@ interface response {
     data: resource[]
 }
 
-export interface resource {
+interface resource {
     object: string
     id: number
     type: 'worker' | string
@@ -19,7 +19,16 @@ export interface resource {
     }
 }
 
-export async function getWorkersForLocation(loc: location, serviceId: number): Promise<resource[]> {
+export interface worker extends resource {
+    location: location
+}
+
+export async function getWorkersForLocation(loc: location, serviceId: number): Promise<worker[]> {
     const response = await axios.get<response>(`https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/services/${serviceId}/resources`)
-    return response.data.data.filter(resource => resource.type === 'worker')
+    return response.data.data.filter(resource => resource.type === 'worker').map(worker => {
+        return {
+            ...worker,
+            location: loc,
+        }
+    })
 }

@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {Person} from "./groom/Person";
-import {getHelsinkiLocations} from "./groom/api/locations";
-import {getWorkersForLocation, resource as worker} from './groom/api/workers'
-import {getHairServiceIdForLocation} from "./groom/api/serviceCategories";
+import {getHelsinkiLocations} from './groom/api/locations'
+import {getWorkersForLocation, worker} from './groom/api/workers'
+import {getHairServiceIdForLocation} from './groom/api/serviceCategories'
 
 function App() {
 

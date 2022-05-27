@@ -1,5 +1,5 @@
 import React from 'react';
-import {resource as worker} from './api/workers'
+import {worker} from './api/workers'
 
 function firstName(name: string) {
     return name.split(' ')[0]
@@ -9,7 +9,8 @@ export function Person(worker: worker) {
     return (
         <div className='person'>
             <div>
-                <span>{firstName(worker.name)}</span>
+                <div>{firstName(worker.name)}</div>
+                <div className='location'>{worker.location.name}</div>
             </div>
             <div>
                 <img src={worker.image_url} />
