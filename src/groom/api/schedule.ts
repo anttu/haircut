@@ -2,7 +2,8 @@ import axios from 'axios'
 import moment from 'moment'
 
 function getTodayIso(): string {
-    return moment().add(1, 'days').format('YYYY-MM-DD')
+    return moment().format('YYYY-MM-DD')
+    //return moment().add(1, 'days').format('YYYY-MM-DD')
 }
 
 export async function getTodaysScheduleForEmployee(locationId: string, workerId: number, serviceId: number): Promise<Schedule> {
@@ -18,10 +19,10 @@ export async function getTodaysScheduleForEmployee(locationId: string, workerId:
 
 export interface Schedule {
     date: string
-    available: availability[]
+    available: Availability[]
 }
 
-interface availability {
+export interface Availability {
     from: string
     to: string
     resources: number[]

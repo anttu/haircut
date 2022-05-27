@@ -1,6 +1,6 @@
 import React from 'react';
 import {workerWithSchedule} from '../App'
-import {Schedule} from "./api/schedule";
+import {Availability, Schedule} from "./api/schedule";
 
 function firstName(name: string) {
     return name.split(' ')[0]
@@ -23,9 +23,29 @@ export function Person(worker: workerWithSchedule) {
     )
 }
 
-function schedule(schedule: Schedule) {
+function combineSchedule(schedule: Schedule) {
+    return schedule.available.reduce((accumulation, curr) => {
+        const prev = accumulation.pop()
+
+        if (!prev) return [curr] // first item
+
+        if (curr.from <= prev.to) {
+            const end = (prev.to > curr.to) ? prev.to : curr.to
+            return [...accumulation, {
+                ...prev,
+                to: end
+            }]
+        }
+
+        return [...accumulation, prev, curr]
+
+    }, [] as Availability[])
+}
+
+function schedule(schedule: Schedule, combine: boolean = true) {
     if (!schedule || !schedule.available) return <span>Not available</span>
 
-    return schedule.available.map(available => <div>{available.from}-{available.to}</div>)
+    const availability = combine ? combineSchedule(schedule) : schedule.available
+    return availability.map(available => <div>{available.from}-{available.to}</div>)
 }
 
