@@ -12,6 +12,7 @@
 .App {
   background-color: #282c34;
   padding-left: 5rem;
+  padding-right: 10rem;
 }
 
 .content {
@@ -25,20 +26,28 @@
 
 .person {
   display: flex;
-  width: 600px;
   height: 400px;
+  width: 100%;
   flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.person div {
+.person .name {
+  width: 15%;
+}
+.person .image {
+  width: 25%;
+}
+.person .schedule {
+  width: 50%;
 }
 .person .location {
   font-size: 1rem;
 }
 
 .person img {
+  width: 100%;
   object-fit: scale-down;
 }
 

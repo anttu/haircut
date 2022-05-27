@@ -8,12 +8,15 @@ function firstName(name: string) {
 export function Person(worker: worker) {
     return (
         <div className='person'>
-            <div>
+            <div className='name'>
                 <div>{firstName(worker.name)}</div>
                 <div className='location'>{worker.location.name}</div>
             </div>
-            <div>
+            <div className='image'>
                 <img src={worker.image_url} />
+            </div>
+            <div className='schedule'>
+                HUUUUUHAAAAA
             </div>
         </div>
     )
