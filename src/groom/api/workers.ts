@@ -12,7 +12,7 @@ interface resource {
     id: number
     type: 'worker' | string
     name: string
-    image_url: "https://s3-eu-west-1.amazonaws.com/digitalbooker.ui/customers/groom/resources/71.jpeg?ts=1527235774",
+    image_url: string
     description: {
         object: string
         text: string

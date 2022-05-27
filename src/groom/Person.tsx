@@ -1,11 +1,12 @@
 import React from 'react';
-import {worker} from './api/workers'
+import {workerWithSchedule} from '../App'
+import {Schedule} from "./api/schedule";
 
 function firstName(name: string) {
     return name.split(' ')[0]
 }
 
-export function Person(worker: worker) {
+export function Person(worker: workerWithSchedule) {
     return (
         <div className='person'>
             <div className='name'>
@@ -16,9 +17,15 @@ export function Person(worker: worker) {
                 <img src={worker.image_url} />
             </div>
             <div className='schedule'>
-                HUUUUUHAAAAA
+                {schedule(worker.schedule)}
             </div>
         </div>
     )
+}
+
+function schedule(schedule: Schedule) {
+    if (!schedule || !schedule.available) return <span>Not available</span>
+
+    return schedule.available.map(available => <div>{available.from}-{available.to}</div>)
 }
 
