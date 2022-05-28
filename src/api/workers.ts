@@ -1,7 +1,8 @@
 import axios from 'axios'
 import {getHelsinkiLocations, location} from './locations'
 import {getBasicHairCutServiceIdForLocation} from "./serviceCategories";
-import {getTodaysScheduleForEmployee, Schedule} from "./schedule";
+import {getScheduleForEmployee, Schedule} from "./schedule";
+import moment from 'moment'
 
 interface response {
     object: string
@@ -39,14 +40,14 @@ async function getWorkersForLocation(loc: location, serviceId: number): Promise<
     })
 }
 
-export async function getWorkersForHelsinki(): Promise<workerWithSchedule[]> {
+export async function getWorkersForHelsinki(day: moment.Moment): Promise<workerWithSchedule[]> {
     const helsinkiLocations = await getHelsinkiLocations()
     const workersForLocations = await Promise.all(helsinkiLocations.map(async store => {
         const basicHaircutId = await getBasicHairCutServiceIdForLocation(store)
         const workersForLocation = await getWorkersForLocation(store, basicHaircutId)
         return Promise.all(workersForLocation.map(async worker => ({
             ...worker,
-            schedule: await getTodaysScheduleForEmployee(store.url_text, worker.id, basicHaircutId)
+            schedule: await getScheduleForEmployee(store.url_text, worker.id, basicHaircutId, day)
         })))
     }))
 

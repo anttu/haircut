@@ -1,20 +1,19 @@
 import axios from 'axios'
 import moment from 'moment'
 
-function getTodayIso(): string {
-    return moment().format('YYYY-MM-DD')
-    //return moment().add(1, 'days').format('YYYY-MM-DD')
+function getDayAsIso(date: moment.Moment): string {
+    return date.format('YYYY-MM-DD')
 }
 
-export async function getTodaysScheduleForEmployee(locationId: string, workerId: number, serviceId: number): Promise<Schedule> {
-    const today = getTodayIso()
-    const url = `https://www.varaaheti.fi/groom/fi/api/public/locations/${locationId}/views/palvelut/services/${serviceId}/available?worker_id=${workerId}&date=${today}`
+export async function getScheduleForEmployee(locationId: string, workerId: number, serviceId: number, scheduleDay: moment.Moment): Promise<Schedule> {
+    const day = getDayAsIso(scheduleDay)
+    const url = `https://www.varaaheti.fi/groom/fi/api/public/locations/${locationId}/views/palvelut/services/${serviceId}/available?worker_id=${workerId}&date=${day}`
     const response = await axios.get<response>(url)
 
-    const todaySchedule = response.data.data.find(schedule => schedule.date === today)
-    if (!todaySchedule) throw new Error(`Could not find schedule for worker ${workerId} and location ${locationId}`)
+    const scheduleForGivenDay = response.data.data.find(schedule => schedule.date === day)
+    if (!scheduleForGivenDay) throw new Error(`Could not find schedule for worker ${workerId} and location ${locationId}`)
 
-    return todaySchedule
+    return scheduleForGivenDay
 }
 
 export interface Schedule {

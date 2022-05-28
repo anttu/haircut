@@ -12,13 +12,15 @@ function App() {
   const [date, setDate] = useState(moment())
 
   useEffect( () => {
-    getWorkersForHelsinki().then(workers => setWorkers(workers))
-  }, [])
+    getWorkersForHelsinki(date).then(workers => setWorkers(workers))
+  }, [date])
 
     function decreaseDate() {
+        setWorkers([])
         setDate(date.add(-1, 'days').clone())
     }
     function increaseDate() {
+        setWorkers([])
         setDate(date.add(1, 'days').clone())
     }
 
