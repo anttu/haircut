@@ -1,5 +1,5 @@
 import React from 'react'
-import {Availability, Schedule as workerSchedule} from './api/schedule'
+import {Availability, Schedule as workerSchedule} from './groom/api/schedule'
 
 function combineSchedule(schedule: workerSchedule) {
     return schedule.available.reduce((accumulation, curr) => {
