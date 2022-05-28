@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {getHelsinkiLocations, location} from './locations'
-import {getBasicHairCutServiceIdForLocation} from "./serviceCategories";
-import {getScheduleForEmployee, Schedule} from "./schedule";
+import { getHelsinkiLocations, location } from './locations'
+import { getBasicHairCutServiceIdForLocation } from './serviceCategories'
+import { getScheduleForEmployee, Schedule } from './schedule'
 import moment from 'moment'
 
 interface response {
@@ -31,25 +31,33 @@ export interface workerWithSchedule extends worker {
 }
 
 async function getWorkersForLocation(loc: location, serviceId: number): Promise<worker[]> {
-    const response = await axios.get<response>(`https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/services/${serviceId}/resources`)
-    return response.data.data.filter(resource => resource.type === 'worker').map(worker => {
-        return {
-            ...worker,
-            location: loc,
-        }
-    })
+    const response = await axios.get<response>(
+        `https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/services/${serviceId}/resources`
+    )
+    return response.data.data
+        .filter((resource) => resource.type === 'worker')
+        .map((worker) => {
+            return {
+                ...worker,
+                location: loc,
+            }
+        })
 }
 
 export async function getWorkersForHelsinki(day: moment.Moment): Promise<workerWithSchedule[]> {
     const helsinkiLocations = await getHelsinkiLocations()
-    const workersForLocations = await Promise.all(helsinkiLocations.map(async store => {
-        const basicHaircutId = await getBasicHairCutServiceIdForLocation(store)
-        const workersForLocation = await getWorkersForLocation(store, basicHaircutId)
-        return Promise.all(workersForLocation.map(async worker => ({
-            ...worker,
-            schedule: await getScheduleForEmployee(store.url_text, worker.id, basicHaircutId, day)
-        })))
-    }))
+    const workersForLocations = await Promise.all(
+        helsinkiLocations.map(async (store) => {
+            const basicHaircutId = await getBasicHairCutServiceIdForLocation(store)
+            const workersForLocation = await getWorkersForLocation(store, basicHaircutId)
+            return Promise.all(
+                workersForLocation.map(async (worker) => ({
+                    ...worker,
+                    schedule: await getScheduleForEmployee(store.url_text, worker.id, basicHaircutId, day),
+                }))
+            )
+        })
+    )
 
     return workersForLocations.flat()
 }

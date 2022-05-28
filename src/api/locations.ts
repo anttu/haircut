@@ -11,7 +11,7 @@ export interface location {
     phone: string
     lat: string
     lng: string
-    views: view[],
+    views: view[]
     online_payments: boolean
 }
 
@@ -25,7 +25,7 @@ interface view {
     select_worker: {
         anyone: boolean
         select_yourself: boolean
-    },
+    }
     worker_title: string
     has_extra_info: boolean
     has_week_browser: boolean
@@ -43,8 +43,7 @@ export async function getLocations(): Promise<location[]> {
     return response.data.data
 }
 
-
 export async function getHelsinkiLocations(): Promise<location[]> {
     const locations = await getLocations()
-    return locations.filter(l => l.city === 'Helsinki')
+    return locations.filter((l) => l.city === 'Helsinki')
 }

@@ -5,13 +5,19 @@ function getDayAsIso(date: moment.Moment): string {
     return date.format('YYYY-MM-DD')
 }
 
-export async function getScheduleForEmployee(locationId: string, workerId: number, serviceId: number, scheduleDay: moment.Moment): Promise<Schedule> {
+export async function getScheduleForEmployee(
+    locationId: string,
+    workerId: number,
+    serviceId: number,
+    scheduleDay: moment.Moment
+): Promise<Schedule> {
     const day = getDayAsIso(scheduleDay)
     const url = `https://www.varaaheti.fi/groom/fi/api/public/locations/${locationId}/views/palvelut/services/${serviceId}/available?worker_id=${workerId}&date=${day}`
     const response = await axios.get<response>(url)
 
-    const scheduleForGivenDay = response.data.data.find(schedule => schedule.date === day)
-    if (!scheduleForGivenDay) throw new Error(`Could not find schedule for worker ${workerId} and location ${locationId}`)
+    const scheduleForGivenDay = response.data.data.find((schedule) => schedule.date === day)
+    if (!scheduleForGivenDay)
+        throw new Error(`Could not find schedule for worker ${workerId} and location ${locationId}`)
 
     return scheduleForGivenDay
 }
