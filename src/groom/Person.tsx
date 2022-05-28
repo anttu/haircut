@@ -46,6 +46,6 @@ function schedule(schedule: Schedule, combine: boolean = true) {
     if (!schedule || !schedule.available) return <span>Not available</span>
 
     const availability = combine ? combineSchedule(schedule) : schedule.available
-    return availability.map(available => <div>{available.from}-{available.to}</div>)
+    return availability.map(available => <div key={available.from}>{available.from}-{available.to}</div>)
 }
 

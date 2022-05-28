@@ -46,7 +46,7 @@ function App() {
         {loadingIndicator()}
 
         { workers?.map(w =>
-            <Person {...w} key={w.id} />
+            <Person {...w} key={`${w.id}-${w.location.id}`} />
         )}
 
         </div>
