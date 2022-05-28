@@ -18,7 +18,7 @@ async function getServiceCategoriesForLocation(locationName: string): Promise<ca
     return response.data.data
 }
 
-export async function getHairServiceIdForLocation(loc: location) {
+export async function getBasicHairCutServiceIdForLocation(loc: location) {
     const categories = await getServiceCategoriesForLocation(loc.url_text)
     const hairService = categories.find(c => c.name === 'HIUKSET')
     if (!hairService) throw new Error('No hair category found')
