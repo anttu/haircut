@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {Availability, Schedule as workerSchedule} from './api/schedule'
 
 function combineSchedule(schedule: workerSchedule) {
@@ -8,10 +8,10 @@ function combineSchedule(schedule: workerSchedule) {
         if (!prev) return [curr] // first item
 
         if (curr.from <= prev.to) {
-            const end = (prev.to > curr.to) ? prev.to : curr.to
+            const latestEndTime = (prev.to > curr.to) ? prev.to : curr.to
             return [...accumulation, {
                 ...prev,
-                to: end
+                to: latestEndTime
             }]
         }
 
