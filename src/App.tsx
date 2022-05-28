@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './css/App.css'
 import {Person} from './Person'
-import {getWorkersForHelsinki, workerWithSchedule} from './groom/api/workers'
+import {getWorkersForHelsinki, workerWithSchedule} from './api/workers'
 import {LoadingIndicator} from "./LoadingIndicator";
 
 function App() {

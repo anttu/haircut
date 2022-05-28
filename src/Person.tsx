@@ -1,6 +1,6 @@
 import React from 'react'
 import {Schedule} from "./Schedule"
-import {workerWithSchedule} from './groom/api/workers'
+import {workerWithSchedule} from './api/workers'
 
 function firstName(name: string) {
     return name.split(' ')[0]
