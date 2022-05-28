@@ -3,24 +3,38 @@ import './css/App.css'
 import {Person} from './Person'
 import {getWorkersForHelsinki, workerWithSchedule} from './api/workers'
 import {LoadingIndicator} from "./LoadingIndicator";
+import {TopBar} from "./TopBar";
+import moment from 'moment'
 
 function App() {
 
   const [workers, setWorkers] = useState<workerWithSchedule[]>()
+  const [date, setDate] = useState(moment())
 
   useEffect( () => {
     getWorkersForHelsinki().then(workers => setWorkers(workers))
   }, [])
 
+    function decreaseDate() {
+        setDate(date.add(-1, 'days').clone())
+    }
+    function increaseDate() {
+        setDate(date.add(1, 'days').clone())
+    }
 
   return (
     <div className="App">
         <div className="content">
-        <LoadingIndicator workers={workers} />
+            <TopBar
+                date={date}
+                onDateIncreased={increaseDate}
+                onDateDecreased={decreaseDate} />
 
-        { workers?.map(w =>
-            <Person {...w} key={`${w.id}-${w.location.id}`} />
-        )}
+            <LoadingIndicator workers={workers} />
+
+            { workers?.map(w =>
+                <Person {...w} key={`${w.id}-${w.location.id}`} />
+            )}
 
         </div>
     </div>

@@ -24,6 +24,17 @@
   color: white;
 }
 
+.topbar {
+  display: flex;
+  justify-content: space-around;
+
+  position: fixed;
+  top: 0;
+
+  background: #282c34;
+  width: 100%;
+}
+
 .person {
   display: flex;
   height: 400px;
