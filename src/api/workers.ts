@@ -31,14 +31,24 @@ export interface workerWithSchedule extends worker {
 }
 
 async function getWorkersForLocation(loc: location, serviceId: number): Promise<worker[]> {
-    const response = await axios.get<response>(
-        `https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/services/${serviceId}/resources`
-    )
-    return response.data.data
+    try {
+        const response = await axios.get<response>(
+            `https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/services/${serviceId}/resources`
+        )
+
+        return appendLocationForWorkerResource(response.data.data, loc)
+    } catch (e) {
+        console.log(`Failed to get workers for location ${loc} doing service ${serviceId}`)
+        return []
+    }
+}
+
+function appendLocationForWorkerResource(resources: resource[], loc: location): worker[] {
+    return resources
         .filter((resource) => resource.type === 'worker')
-        .map((worker) => {
+        .map((resource) => {
             return {
-                ...worker,
+                ...resource,
                 location: loc,
             }
         })
