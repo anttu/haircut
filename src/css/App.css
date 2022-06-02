@@ -58,6 +58,15 @@
     font-size: 1rem;
 }
 
+.person .timeslot {
+    height: 2rem;
+    margin-top: 1rem;
+}
+
+.person .timeslot:not(:last-of-type) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
 .person img {
     width: 100%;
     object-fit: scale-down;

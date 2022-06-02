@@ -32,7 +32,7 @@ export function Schedule(schedule: workerSchedule) {
 
     const availability = combineSchedule(schedule)
     const elements = availability.map((available) => (
-        <div key={available.from}>
+        <div className="timeslot" key={available.from}>
             {available.from}-{available.to}
         </div>
     ))

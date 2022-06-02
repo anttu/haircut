@@ -16,9 +16,8 @@ export function Person(worker: workerWithSchedule) {
             <div className="image">
                 <img src={worker.image_url} />
             </div>
-            <div className="schedule">
-                <Schedule {...worker.schedule} />
-            </div>
+
+            <Schedule {...worker.schedule} />
         </div>
     )
 }
