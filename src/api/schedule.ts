@@ -1,5 +1,6 @@
 import axios from 'axios'
 import moment from 'moment'
+import { findOrThrow } from '../utils'
 
 function getDayAsIso(date: moment.Moment): string {
     return date.format('YYYY-MM-DD')
@@ -25,13 +26,6 @@ export async function getScheduleForEmployee(
             available: [],
         }
     }
-}
-
-function findOrThrow<T>(collection: T[], predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): T {
-    const result = collection.find(predicate)
-    if (!result) throw new Error('Result not found')
-
-    return result
 }
 
 export interface Schedule {

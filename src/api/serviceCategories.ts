@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { location } from './locations'
+import { findOrThrow } from '../utils'
 
 interface category {
     object: string
@@ -22,16 +23,15 @@ async function getServiceCategoriesForLocation(locationName: string): Promise<ca
 
 export async function getBasicHairCutServiceIdForLocation(loc: location) {
     const categories = await getServiceCategoriesForLocation(loc.url_text)
-    const hairService = categories.find((c) => c.name === 'HIUKSET')
-    if (!hairService) throw new Error('No hair category found')
+    const hairService = findOrThrow(categories, (c) => c.name === 'HIUKSET')
 
     const serviceCategories = await axios.get<serviceCategoryResponse>(
         `https://www.varaaheti.fi/groom/fi/api/public/locations/${loc.url_text}/views/palvelut/service_categories/${hairService.id}`
     )
-    const basicHairService = serviceCategories.data.services.find((service) =>
+
+    const basicHairService = findOrThrow(serviceCategories.data.services, (service) =>
         service.name.toLowerCase().startsWith('basic')
     )
-    if (!basicHairService) throw new Error('No basic haircut service found')
 
     return basicHairService.id
 }
