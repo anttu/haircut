@@ -31,19 +31,22 @@ const PersonContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 
     @media only screen and (min-width: 1001px) {
         flex-direction: row;
     }
 `
 const Name = styled.div`
-    margin-top: 10px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 
     @media only screen and (min-width: 1001px) {
         width: 15%;
     }
 `
 const Location = styled.div`
+    margin-top: 0.5rem;
     font-size: 1rem;
 `
 
