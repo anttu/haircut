@@ -15,7 +15,7 @@ interface resource {
     id: number
     type: 'worker' | string
     name: string
-    image_url: string
+    image_url: string | undefined
     description: {
         object: string
         text: string

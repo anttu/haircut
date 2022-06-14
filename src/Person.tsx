@@ -2,6 +2,7 @@ import React from 'react'
 import { Schedule } from './Schedule'
 import { workerWithSchedule } from './api/workers'
 import styled from 'styled-components'
+import { Portrait } from './Portrait'
 
 function firstName(name: string) {
     return name.split(' ')[0]
@@ -14,10 +15,7 @@ export function Person(worker: workerWithSchedule) {
                 <div>{firstName(worker.name)}</div>
                 <Location>{worker.location.name}</Location>
             </Name>
-            <Image>
-                <img alt="portrait" src={worker.image_url} />
-            </Image>
-
+            <Portrait imageUrl={worker.image_url} />
             <Schedule {...worker.schedule} />
         </PersonContainer>
     )
@@ -48,15 +46,4 @@ const Name = styled.div`
 const Location = styled.div`
     margin-top: 0.5rem;
     font-size: 1rem;
-`
-
-const Image = styled.div`
-    img {
-        width: 100%;
-        object-fit: scale-down;
-    }
-
-    @media only screen and (min-width: 1001px) {
-        width: 25%;
-    }
 `
