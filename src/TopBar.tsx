@@ -11,10 +11,10 @@ export function TopBar(props: TopBarProps) {
     const displayDate = props.date.format('YYYY-MM-DD')
 
     return (
-        <div className="topbar">
+        <nav className="topbar">
             <button onClick={props.onDateDecreased}>&lt;&lt;</button>
             <span>{displayDate}</span>
             <button onClick={props.onDateIncreased}>&gt;&gt;</button>
-        </div>
+        </nav>
     )
 }

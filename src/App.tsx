@@ -26,15 +26,15 @@ function App() {
 
     return (
         <div className="App">
-            <div className="content">
-                <TopBar date={date} onDateIncreased={increaseDate} onDateDecreased={decreaseDate} />
+            <TopBar date={date} onDateIncreased={increaseDate} onDateDecreased={decreaseDate} />
 
-                <LoadingIndicator workers={workers} />
+            <LoadingIndicator workers={workers} />
 
+            <main>
                 {workers?.map((w) => (
                     <Person {...w} key={`${w.id}-${w.location.id}`} />
                 ))}
-            </div>
+            </main>
         </div>
     )
 }

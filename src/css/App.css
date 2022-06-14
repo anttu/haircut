@@ -13,15 +13,16 @@
     background-color: #282c34;
     padding-left: 5rem;
     padding-right: 10rem;
+    color: white;
+    font-size: calc(10px + 2vmin);
 }
 
-.content {
+main {
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+    margin-top: 32px;
 }
 
 .topbar {
@@ -44,6 +45,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .person .name {
     width: 15%;
 }
@@ -70,6 +72,24 @@
 .person img {
     width: 100%;
     object-fit: scale-down;
+}
+
+@media only screen and (max-width: 1000px) {
+    .person {
+        flex-direction: column;
+    }
+    .person div {
+        margin-top: 10px;
+    }
+    .person .schedule {
+        width: unset;
+    }
+    .person .name {
+        width: unset;
+    }
+    .person .image {
+        width: unset;
+    }
 }
 
 .App-link {
