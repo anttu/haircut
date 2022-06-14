@@ -36,22 +36,6 @@ main {
     width: 100%;
 }
 
-.person {
-    display: flex;
-    height: 400px;
-    width: 100%;
-    flex: 1;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.person .name {
-    width: 15%;
-}
-.person .image {
-    width: 25%;
-}
 .person .schedule {
     width: 50%;
     font-size: 1rem;
@@ -75,19 +59,7 @@ main {
 }
 
 @media only screen and (max-width: 1000px) {
-    .person {
-        flex-direction: column;
-    }
-    .person div {
-        margin-top: 10px;
-    }
     .person .schedule {
-        width: unset;
-    }
-    .person .name {
-        width: unset;
-    }
-    .person .image {
         width: unset;
     }
 }
