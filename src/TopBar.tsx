@@ -15,7 +15,7 @@ export function TopBar(props: TopBarProps) {
     return (
         <TopBarContainer>
             <button onClick={props.onDateDecreased}>&lt;&lt;</button>
-            <span>{displayDate}</span>
+            <Date>{displayDate}</Date>
             <button onClick={props.onDateIncreased}>&gt;&gt;</button>
         </TopBarContainer>
     )
@@ -32,4 +32,9 @@ const TopBarContainer = styled.nav`
 
     background-color: #282c34;
     width: 100%;
+`
+
+const Date = styled.span`
+    margin-top: auto;
+    margin-bottom: auto;
 `
