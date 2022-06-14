@@ -9,13 +9,13 @@ function firstName(name: string) {
 
 export function Person(worker: workerWithSchedule) {
     return (
-        <PersonContainer className="person">
-            <Name className="name">
+        <PersonContainer>
+            <Name>
                 <div>{firstName(worker.name)}</div>
-                <div className="location">{worker.location.name}</div>
+                <Location>{worker.location.name}</Location>
             </Name>
-            <Image className="image">
-                <img src={worker.image_url} />
+            <Image>
+                <img alt="portrait" src={worker.image_url} />
             </Image>
 
             <Schedule {...worker.schedule} />
@@ -43,7 +43,16 @@ const Name = styled.div`
         width: 15%;
     }
 `
+const Location = styled.div`
+    font-size: 1rem;
+`
+
 const Image = styled.div`
+    img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+
     @media only screen and (min-width: 1001px) {
         width: 25%;
     }
