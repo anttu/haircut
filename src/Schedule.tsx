@@ -26,9 +26,9 @@ function combineSchedule(schedule: workerSchedule) {
 export function Schedule(schedule: workerSchedule) {
     if (!schedule || !schedule.available)
         return (
-            <div className="schedule">
+            <ScheduleContainer>
                 <span>Not available</span>
-            </div>
+            </ScheduleContainer>
         )
 
     const availability = combineSchedule(schedule)
