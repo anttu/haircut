@@ -6,6 +6,7 @@ import { LoadingIndicator } from './LoadingIndicator'
 import { TopBar } from './TopBar'
 import moment from 'moment'
 import styled from 'styled-components'
+import { topbar } from './css/styles'
 
 function App() {
     const [workers, setWorkers] = useState<workerWithSchedule[]>()
@@ -47,7 +48,7 @@ const Main = styled.main`
     flex-direction: column;
     align-items: start;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: ${topbar.height}rem;
 `
 
 const AppContainer = styled.div`

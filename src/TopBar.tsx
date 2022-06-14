@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import styled from 'styled-components'
+import { topbar } from './css/styles'
 
 interface TopBarProps {
     date: moment.Moment
@@ -21,12 +22,14 @@ export function TopBar(props: TopBarProps) {
 }
 
 const TopBarContainer = styled.nav`
+    height: ${topbar.height}rem;
     display: flex;
     justify-content: space-around;
 
     position: fixed;
     top: 0;
+    left 0;
 
-    background: #282c34;
+    background-color: #282c34;
     width: 100%;
 `
