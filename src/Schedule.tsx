@@ -44,12 +44,10 @@ export function Schedule(schedule: workerSchedule) {
 const ScheduleContainer = styled.div`
     margin-top: 1rem;
     font-size: 1.2rem;
-    text-align: center;
 
     @media only screen and (min-width: ${devices.web}px) {
         margin-top: 0;
         width: 50%;
-        text-align: left;
     }
 `
 
