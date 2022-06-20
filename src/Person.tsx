@@ -32,6 +32,10 @@ const PersonContainer = styled.div`
     justify-content: space-between;
     margin-top: 1rem;
 
+    &:last-of-type {
+        margin-bottom: 5rem;
+    }
+
     ${devices.web} {
         flex-direction: row;
         align-items: center;
