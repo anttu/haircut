@@ -28,12 +28,15 @@ const PersonContainer = styled.div`
     width: 100%;
     flex: 1;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
 
     &:last-of-type {
         margin-bottom: 5rem;
+    }
+
+    ${devices.tablet} {
+        padding-left: 1rem;
     }
 
     ${devices.web} {

@@ -44,6 +44,7 @@ export function Schedule(schedule: workerSchedule) {
 const ScheduleContainer = styled.div`
     margin-top: 1rem;
     font-size: 1.2rem;
+    text-align: center;
 
     ${devices.web} {
         margin-top: 0;

@@ -19,12 +19,6 @@ export function Portrait(props: PortraitProps) {
 const Image = styled.div`
     img {
         width: 100%;
-        max-width: 30rem;
-        object-fit: scale-down;
-
-        ${devices.tablet} {
-            object-fit: fill;
-        }
     }
 
     ${devices.web} {
