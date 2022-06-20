@@ -49,6 +49,7 @@ const ScheduleContainer = styled.div`
     ${devices.web} {
         margin-top: 0;
         width: 50%;
+        text-align: left;
     }
 
     ${devices.small_mobile} {
