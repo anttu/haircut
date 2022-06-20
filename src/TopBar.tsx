@@ -14,9 +14,13 @@ export function TopBar(props: TopBarProps) {
 
     return (
         <TopBarContainer>
-            <button onClick={props.onDateDecreased}>&lt;&lt;</button>
+            <Button onClick={props.onDateDecreased}>
+                <ArrowLeft />
+            </Button>
             <Date>{displayDate}</Date>
-            <button onClick={props.onDateIncreased}>&gt;&gt;</button>
+            <Button onClick={props.onDateIncreased}>
+                <ArrowRight />
+            </Button>
         </TopBarContainer>
     )
 }
@@ -30,11 +34,30 @@ const TopBarContainer = styled.nav`
     top: 0;
     left 0;
 
-    background-color: #282c34;
+    background-color: #556075;
     width: 100%;
 `
 
 const Date = styled.span`
     margin-top: auto;
     margin-bottom: auto;
+`
+
+const Arrow = styled.span`
+    border: solid black;
+    border-width: 0 0.2em 0.2em 0;
+    display: inline-block;
+    padding: 0.2em;
+`
+
+const ArrowLeft = styled(Arrow)`
+    transform: rotate(135deg);
+`
+const ArrowRight = styled(Arrow)`
+    transform: rotate(-45deg);
+`
+const Button = styled.button`
+    border-width: 1px;
+    background-color: #00ffff;
+    width: 4em;
 `
