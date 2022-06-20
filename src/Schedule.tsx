@@ -42,7 +42,7 @@ export function Schedule(schedule: workerSchedule) {
 
 const ScheduleContainer = styled.div`
     margin-top: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
 
     @media only screen and (min-width: 1001px) {

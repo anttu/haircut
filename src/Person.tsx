@@ -11,10 +11,10 @@ function firstName(name: string) {
 export function Person(worker: workerWithSchedule) {
     return (
         <PersonContainer>
-            <Name>
-                <div>{firstName(worker.name)}</div>
+            <Info>
+                <FirstName>{firstName(worker.name)}</FirstName>
                 <Location>{worker.location.name}</Location>
-            </Name>
+            </Info>
             <Portrait imageUrl={worker.image_url} />
             <Schedule {...worker.schedule} />
         </PersonContainer>
@@ -35,9 +35,9 @@ const PersonContainer = styled.div`
         align-items: center;
     }
 `
-const Name = styled.div`
+const Info = styled.div`
     margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 
     @media only screen and (max-width: 1000px) {
         margin-left: 1rem;
@@ -47,7 +47,13 @@ const Name = styled.div`
         width: 15%;
     }
 `
+
+const FirstName = styled.div`
+    font-size: 2rem;
+    font-weight: 600;
+`
+
 const Location = styled.div`
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
 `
