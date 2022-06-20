@@ -52,8 +52,13 @@ const Main = styled.main`
 `
 
 const AppContainer = styled.div`
-    padding-left: 5rem;
-    padding-right: 10rem;
+    padding-left: 1.5rem;
+    padding-right: 4rem;
     color: white;
     font-size: calc(10px + 2vmin);
+
+    @media only screen and (min-width: 1001px) {
+        padding-left: 3rem;
+        padding-right: 7rem;
+    }
 `
