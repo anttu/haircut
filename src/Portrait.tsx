@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { devices } from './css/styles'
 
 const defaultPortrait = 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
 
@@ -21,7 +22,7 @@ const Image = styled.div`
         object-fit: scale-down;
     }
 
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: ${devices.web}px) {
         width: 25%;
     }
 `

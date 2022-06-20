@@ -1,6 +1,7 @@
 import React from 'react'
 import { Availability, Schedule as workerSchedule } from './api/schedule'
 import styled from 'styled-components'
+import { devices } from './css/styles'
 
 function combineSchedule(schedule: workerSchedule) {
     return schedule.available.reduce((accumulation, curr) => {
@@ -45,7 +46,7 @@ const ScheduleContainer = styled.div`
     font-size: 1.2rem;
     text-align: center;
 
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: ${devices.web}px) {
         margin-top: 0;
         width: 50%;
         text-align: left;

@@ -3,6 +3,7 @@ import { Schedule } from './Schedule'
 import { workerWithSchedule } from './api/workers'
 import styled from 'styled-components'
 import { Portrait } from './Portrait'
+import { devices } from './css/styles'
 
 function firstName(name: string) {
     return name.split(' ')[0]
@@ -30,7 +31,7 @@ const PersonContainer = styled.div`
     justify-content: space-between;
     margin-top: 1rem;
 
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: ${devices.web}px) {
         flex-direction: row;
         align-items: center;
     }
@@ -39,11 +40,11 @@ const Info = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
 
-    @media only screen and (max-width: 1000px) {
+    @media only screen and (max-width: ${devices.not_web}px) {
         margin-left: 1rem;
     }
 
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: ${devices.web}px) {
         width: 15%;
     }
 `

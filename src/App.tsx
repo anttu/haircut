@@ -6,7 +6,7 @@ import { LoadingIndicator } from './LoadingIndicator'
 import { TopBar } from './TopBar'
 import moment from 'moment'
 import styled from 'styled-components'
-import { topbar } from './css/styles'
+import { devices, topbar } from './css/styles'
 
 function App() {
     const [workers, setWorkers] = useState<workerWithSchedule[]>()
@@ -57,7 +57,7 @@ const AppContainer = styled.div`
     color: white;
     font-size: calc(10px + 2vmin);
 
-    @media only screen and (min-width: 1001px) {
+    @media only screen and (min-width: ${devices.web}px) {
         padding-left: 3rem;
         padding-right: 7rem;
     }
