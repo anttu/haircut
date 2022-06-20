@@ -52,7 +52,6 @@ const Main = styled.main`
 `
 
 const AppContainer = styled.div`
-    background-color: #282c34;
     padding-left: 5rem;
     padding-right: 10rem;
     color: white;
