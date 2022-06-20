@@ -27,17 +27,21 @@ const PersonContainer = styled.div`
     width: 100%;
     flex: 1;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 
     @media only screen and (min-width: 1001px) {
         flex-direction: row;
+        align-items: center;
     }
 `
 const Name = styled.div`
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+
+    @media only screen and (max-width: 1000px) {
+        margin-left: 1rem;
+    }
 
     @media only screen and (min-width: 1001px) {
         width: 15%;
