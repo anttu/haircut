@@ -57,7 +57,7 @@ const AppContainer = styled.div`
     color: white;
     font-size: calc(10px + 2vmin);
 
-    @media only screen and (min-width: ${devices.web}px) {
+    ${devices.web} {
         padding-left: 3rem;
         padding-right: 7rem;
     }

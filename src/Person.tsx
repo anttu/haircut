@@ -32,7 +32,7 @@ const PersonContainer = styled.div`
     justify-content: space-between;
     margin-top: 1rem;
 
-    @media only screen and (min-width: ${devices.web}px) {
+    ${devices.web} {
         flex-direction: row;
         align-items: center;
     }
@@ -41,11 +41,11 @@ const Info = styled.div`
     margin-top: 1rem;
     margin-bottom: 1rem;
 
-    @media only screen and (max-width: ${devices.not_web}px) {
+    ${devices.not_web} {
         margin-left: 1rem;
     }
 
-    @media only screen and (min-width: ${devices.web}px) {
+    ${devices.web} {
         width: 15%;
     }
 `

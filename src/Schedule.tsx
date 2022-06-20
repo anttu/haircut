@@ -45,7 +45,7 @@ const ScheduleContainer = styled.div`
     margin-top: 1rem;
     font-size: 1.2rem;
 
-    @media only screen and (min-width: ${devices.web}px) {
+    ${devices.web} {
         margin-top: 0;
         width: 50%;
     }

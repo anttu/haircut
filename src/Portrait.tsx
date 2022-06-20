@@ -20,9 +20,14 @@ const Image = styled.div`
     img {
         width: 100%;
         object-fit: scale-down;
+
+        ${devices.tablet} {
+            width: 125%;
+            object-fit: fill;
+        }
     }
 
-    @media only screen and (min-width: ${devices.web}px) {
+    ${devices.web} {
         width: 25%;
     }
 `
