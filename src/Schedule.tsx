@@ -41,16 +41,21 @@ export function Schedule(schedule: workerSchedule) {
 }
 
 const ScheduleContainer = styled.div`
+    margin-top: 1rem;
     font-size: 1rem;
 
     @media only screen and (min-width: 1001px) {
+        margin-top: 0;
         width: 50%;
     }
 `
 
 const Slot = styled.div`
     height: 2rem;
-    margin-top: 1rem;
+
+    &:not(:first-of-type) {
+        margin-top: 1rem;
+    }
 
     &:not(:last-of-type) {
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
