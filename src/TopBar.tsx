@@ -10,7 +10,7 @@ interface TopBarProps {
 }
 
 export function TopBar(props: TopBarProps) {
-    const displayDate = props.date.format('YYYY-MM-DD')
+    const displayDate = props.date.format('DD.MM.YYYY')
 
     return (
         <TopBarContainer>
