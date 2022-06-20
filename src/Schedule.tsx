@@ -49,6 +49,10 @@ const ScheduleContainer = styled.div`
         margin-top: 0;
         width: 50%;
     }
+
+    ${devices.small_mobile} {
+        font-size: 1rem;
+    }
 `
 
 const Slot = styled.div`

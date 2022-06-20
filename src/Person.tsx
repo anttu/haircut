@@ -53,9 +53,17 @@ const Info = styled.div`
 const FirstName = styled.div`
     font-size: 2rem;
     font-weight: 600;
+
+    ${devices.small_mobile} {
+        font-size: 1.2rem;
+    }
 `
 
 const Location = styled.div`
     margin-top: 0.5rem;
     font-size: 1.2rem;
+
+    ${devices.small_mobile} {
+        font-size: 1rem;
+    }
 `
