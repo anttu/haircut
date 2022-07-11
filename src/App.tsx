@@ -2,27 +2,31 @@ import React, { useEffect, useState } from 'react'
 import './css/App.css'
 import { Person } from './Person'
 import { getWorkersForHelsinki, workerWithSchedule } from './api/workers'
-import { LoadingIndicator } from './LoadingIndicator'
 import { TopBar } from './TopBar'
 import moment from 'moment'
 import styled from 'styled-components'
 import { devices, topbar } from './css/styles'
+import { CircleLoadingIndicator } from './CircleLoadingIndicator'
 
 function App() {
+    const [isLoading, setLoading] = useState(true)
     const [workers, setWorkers] = useState<workerWithSchedule[]>()
     const [date, setDate] = useState(moment())
 
     useEffect(() => {
-        getWorkersForHelsinki(date).then((workers) => setWorkers(workers))
+        getWorkersForHelsinki(date).then((workers) => {
+            setWorkers(workers)
+            setLoading(false)
+        })
     }, [date])
 
     function decreaseDate() {
-        setWorkers([])
+        setLoading(true)
         setDate(date.add(-1, 'days').clone())
     }
 
     function increaseDate() {
-        setWorkers([])
+        setLoading(true)
         setDate(date.add(1, 'days').clone())
     }
 
@@ -30,7 +34,7 @@ function App() {
         <AppContainer>
             <TopBar date={date} onDateIncreased={increaseDate} onDateDecreased={decreaseDate} />
 
-            <LoadingIndicator workers={workers} />
+            <CircleLoadingIndicator isLoading={isLoading} />
 
             <Main>
                 {workers?.map((w) => (
