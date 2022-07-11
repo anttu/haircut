@@ -3,7 +3,7 @@ import { CircleLoader } from 'react-spinners'
 
 const cssProperties = {
     position: 'fixed',
-    'z-index': 999,
+    zIndex: 999,
     overflow: 'show',
     margin: 'auto',
     top: 0,
