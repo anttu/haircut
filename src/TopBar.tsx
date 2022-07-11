@@ -14,11 +14,11 @@ export function TopBar(props: TopBarProps) {
 
     return (
         <TopBarContainer>
-            <Button onClick={props.onDateDecreased}>
+            <Button onClick={props.onDateDecreased} aria-label="previous date">
                 <ArrowLeft />
             </Button>
             <Date>{displayDate}</Date>
-            <Button onClick={props.onDateIncreased}>
+            <Button onClick={props.onDateIncreased} aria-label="next date">
                 <ArrowRight />
             </Button>
         </TopBarContainer>
