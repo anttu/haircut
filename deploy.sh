@@ -1,4 +1,5 @@
 #!/bin/sh
+set -o errexit -o nounset -o pipefail
 
 npm test -- --watchAll=false
 npm run build
