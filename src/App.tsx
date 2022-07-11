@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './css/App.css'
 import { Person } from './Person'
 import { getWorkersForHelsinki, workerWithSchedule } from './api/workers'
 import { TopBar } from './TopBar'
